@@ -8,15 +8,21 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
-body {
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,10 +30,18 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
+body {
+  background-color: #e3f2fd;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.content {
+  height: calc(100vh - 96px);
+  padding: 1rem;
 }
