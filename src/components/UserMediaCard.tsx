@@ -38,6 +38,7 @@ export default function UserMediaCard({ userId }: { userId?: String }) {
             src="https://images.pexels.com/photos/1741231/pexels-photo-1741231.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="Image-description"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover rounded-md"
           />
         </Box>
@@ -47,6 +48,7 @@ export default function UserMediaCard({ userId }: { userId?: String }) {
             src="https://images.pexels.com/photos/3932277/pexels-photo-3932277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="Image-description"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover rounded-md"
           />
         </Box>
@@ -56,6 +58,7 @@ export default function UserMediaCard({ userId }: { userId?: String }) {
             src="https://images.pexels.com/photos/25526698/pexels-photo-25526698/free-photo-of-five-storied-pagoda-in-tokyo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="Image-description"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover rounded-md"
           />
         </Box>
@@ -65,6 +68,7 @@ export default function UserMediaCard({ userId }: { userId?: String }) {
             src="https://images.pexels.com/photos/1314584/pexels-photo-1314584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="Image-description"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover rounded-md"
           />
         </Box>
@@ -74,6 +78,7 @@ export default function UserMediaCard({ userId }: { userId?: String }) {
             src="https://images.pexels.com/photos/3007370/pexels-photo-3007370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="Image-description"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover rounded-md"
           />
         </Box>
@@ -83,6 +88,7 @@ export default function UserMediaCard({ userId }: { userId?: String }) {
             src="https://images.pexels.com/photos/7651066/pexels-photo-7651066.jpeg"
             alt="Image-description"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover rounded-md"
           />
         </Box>

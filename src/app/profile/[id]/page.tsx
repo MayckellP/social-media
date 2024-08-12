@@ -42,6 +42,7 @@ const Page = () => {
               alt="Paella dish"
               className="object-cover rounded-sm"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <Image
               src="https://images.pexels.com/photos/1314584/pexels-photo-1314584.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

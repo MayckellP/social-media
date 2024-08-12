@@ -84,6 +84,7 @@ export default function Ads({ size }: { size: "sm" | "md" | "lg" }) {
             src="https://images.pexels.com/photos/3808904/pexels-photo-3808904.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="Paella dish"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover rounded-md"
           />
         </Box>
