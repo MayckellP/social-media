@@ -102,7 +102,7 @@ export default function Navbar() {
   };
 
   //*------------------------------------------------------- MENU PROFILE DESKTOP
-  const menuId = "primary-search-account-menu";
+  /*   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -121,7 +121,7 @@ export default function Navbar() {
     >
       <MenuItem onClick={handleMenuClose}>
         <Link href={"/profile/123"} underline="none">
-          <Typography>Profile</Typography>
+          <Box>Profile</Box>
         </Link>
       </MenuItem>
       <Link href={"/#"} underline="none">
@@ -135,9 +135,9 @@ export default function Navbar() {
       </Link>
     </Menu>
   );
-
+ */
   //*------------------------------------------------------- MENU PROFILE MOBILE
-  const mobileMenuId = "primary-search-account-menu-mobile";
+  /*   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -187,7 +187,7 @@ export default function Navbar() {
             <UserButton />
           </SignedIn>
         </ClerkLoaded>
-        {/* <IconButton
+        <IconButton
           size="large"
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -196,10 +196,10 @@ export default function Navbar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p> */}
+        <p>Profile</p> 
       </MenuItem>
     </Menu>
-  );
+  ); */
 
   return (
     <Box>
@@ -419,7 +419,7 @@ export default function Navbar() {
             <IconButton
               size="large"
               aria-label="show more"
-              aria-controls={mobileMenuId}
+              //aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
@@ -429,8 +429,8 @@ export default function Navbar() {
           </Box>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMobileMenu}
+      {renderMenu} */}
     </Box>
   );
 }

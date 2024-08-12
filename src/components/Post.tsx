@@ -106,9 +106,7 @@ export default function Post() {
               alt="Image-description"
               fill
               className="object-cover rounded-md"
-              sizes="(max-width: 768px) 100vw, 
-           (max-width: 1200px) 50vw, 
-           33vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </Box>
         </Box>
