@@ -11,7 +11,7 @@ const Page = () => {
     <Box
       display="flex"
       flexDirection="row"
-      gap={2}
+      gap={1.5}
       paddingX={3}
       justifyContent="center"
     >
@@ -33,7 +33,7 @@ const Page = () => {
           flexDirection: "column",
           width: { xs: "100%", sm: "68%", md: "70%", lg: "45%" },
         }}
-        gap={2.5}
+        gap={1.5}
       >
         <Box display="flex" flexDirection="column" gap={0.5}>
           <Box className="h-60 relative">

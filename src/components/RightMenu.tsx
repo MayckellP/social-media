@@ -14,7 +14,7 @@ import UserMediaCard from "./UserMediaCard";
 
 export default function RightMenu({ userId }: { userId?: String }) {
   return (
-    <Box display="flex" flexDirection="column" gap={2.5}>
+    <Box display="flex" flexDirection="column" gap={1.5}>
       {userId ? (
         <>
           <UserInfoCard userId={userId} />

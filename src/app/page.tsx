@@ -10,8 +10,10 @@ export default function Home() {
     <Box
       display="flex"
       flexDirection="row"
-      gap={2}
-      paddingX={3}
+      gap={1.5}
+      sx={{
+        paddingX: { xs: 0, sm: 5, md: 8 },
+      }}
       justifyContent="center"
     >
       {/* ----------------------------------------------------LEFT SIDE */}
@@ -36,7 +38,7 @@ export default function Home() {
             display: "flex",
             flexDirection: "column",
           }}
-          gap={2.5}
+          gap={1.5}
         >
           {/* -----------------------------------STORIES*/}
           <Stories></Stories>

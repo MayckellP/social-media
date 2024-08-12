@@ -27,3 +27,4 @@ export const config = {
     "/(api|trpc)(.*)",
   ],
 };
+console.log("CLERK_SECRET_KEY:", process.env.CLERK_SECRET_KEY);

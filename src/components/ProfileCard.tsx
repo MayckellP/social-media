@@ -37,7 +37,7 @@ export default function ProfileCard({ type }: { type: "home" | "profile" }) {
           color="primary"
           variant="contained"
           sx={{
-            width: "40%",
+            width: "50%",
             fontSize: 13,
             textTransform: "none",
             margin: "auto",

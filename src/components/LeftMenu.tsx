@@ -14,7 +14,7 @@ import Ads from "./Ads";
 
 export default function LeftMenu({ type }: { type: "home" | "profile" }) {
   return (
-    <Box display="flex" flexDirection="column" gap={2.5}>
+    <Box display="flex" flexDirection="column" gap={1.5}>
       {type === "home" && <ProfileCard type={type} />}
       <Paper elevation={3} sx={{ padding: 1 }}>
         <Box display="flex" flexDirection="column" gap={1.7}>
