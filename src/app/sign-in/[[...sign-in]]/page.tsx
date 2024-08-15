@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Paper, Typography, Icon } from "@mui/material";
 import Image from "next/image";
 
@@ -23,7 +23,7 @@ import Link from "next/link";
 import { forwardRef } from "react";
 import { useSignIn } from "@clerk/nextjs";
 
-const screenHeight = window.innerHeight;
+//const screenHeight = window.innerHeight;
 
 const MUIInput = forwardRef(function MUIInput(props, ref) {
   return (
@@ -53,26 +53,25 @@ const MUIInputError = forwardRef(function MUIInputError(props, ref) {
 });
 
 export default function Page() {
-  const [email, setEmail] = useState<string>("");
-  const [error, setError] = useState<string>("");
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = event.target.value;
-    setEmail(newEmail);
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(newEmail)) {
-      setError("Por favor, ingrese un correo electrónico válido.");
-    } else {
-      setError("");
-    }
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenHeight(window.innerHeight);
+    };
 
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <Box
       minHeight={`${screenHeight}px`}
       height={`${screenHeight}px`}
-      maxHeight={`${screenHeight}px`}
-      sx={{ display: "flex", flexDirection: "column", bgcolor: "#1976d2" }}
+      //maxHeight={`${screenHeight}px`}
+      sx={{ bgcolor: "#1976d2" }}
     >
       {/* --------------------------------------------------------TOP SIDE - LOGO */}
       <Box
