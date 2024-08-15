@@ -5,6 +5,10 @@ import Stories from "@/components/Stories";
 import AddPost from "@/components/AddPost";
 import PostFeed from "@/components/PostFeed";
 
+//-----------AUTH
+import { ClerkLoaded } from "@clerk/nextjs";
+import { SignedOut, SignedIn } from "@clerk/clerk-react";
+
 export default function Home() {
   return (
     <Box

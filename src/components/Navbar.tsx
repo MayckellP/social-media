@@ -35,6 +35,7 @@ import { ClerkLoaded } from "@clerk/nextjs";
 import { SignedOut, SignedIn } from "@clerk/clerk-react";
 import Notifications from "@mui/icons-material/Notifications";
 import Divider from "@mui/material/Divider";
+import Image from "next/image";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -78,44 +79,50 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
   return (
-    <Box>
-      <AppBar
-        position="static"
-        color="inherit"
-        sx={{
-          boxShadow: 0,
-          backgroundColor: "#212121",
-        }}
-      >
-        <Toolbar
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            color: "lightgray",
-          }}
-        >
-          {/*------------------------------------------------------- LOGO */}
-          <Typography
-            /* variant="h5" */
-            noWrap
-            component="div"
+    <ClerkLoaded>
+      <SignedIn>
+        <Box>
+          <AppBar
+            position="static"
+            color="inherit"
             sx={{
-              display: {
-                xs: "none",
-                sm: "block",
-                color: "lightgray",
-              },
-              fontWeight: "bold",
-              fontSize: "h6.fontSize",
-              fontFamily: "Monospace",
+              boxShadow: 0,
+              backgroundColor: "#212121",
             }}
           >
-            Micky Social
-          </Typography>
+            <Toolbar
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                color: "lightgray",
+              }}
+            >
+              {/*------------------------------------------------------- LOGO */}
+              <Link
+                /* variant="h5" */
+                noWrap
+                component="div"
+                sx={{
+                  display: {
+                    xs: "none",
+                    sm: "block",
+                    color: "lightgray",
+                  },
+                  fontWeight: "bold",
+                  fontSize: "h6.fontSize",
+                  fontFamily: "Monospace",
+                }}
+              >
+                <Image
+                  src={"/Micky-Social(white).svg"}
+                  alt="Logo"
+                  width={100}
+                  height={100}
+                />
+              </Link>
 
-          {/*------------------------------------------------------- ICONS */}
-          <ClerkLoaded>
-            <SignedIn>
+              {/*------------------------------------------------------- ICONS */}
+
               <Box
                 sx={{
                   backgroundColor: "",
@@ -141,7 +148,7 @@ export default function Navbar() {
                   </IconButton>
                 </Tooltip>
 
-                <Tooltip title="Friends" arrow>
+                {/* <Tooltip title="Friends" arrow>
                   <IconButton size="small" color="inherit">
                     <Badge>
                       <Group />
@@ -175,101 +182,99 @@ export default function Navbar() {
                       Stories
                     </Typography>
                   </IconButton>
-                </Tooltip>
+                </Tooltip> */}
               </Box>
-            </SignedIn>
-          </ClerkLoaded>
 
-          {/*------------------------------------------------------- SEARCH */}
-          <Search
-            sx={{
-              width: { xs: "100%", sm: "auto", md: "400px" },
-            }}
-          >
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{
-                "aria-label": "search",
-                sx: {
-                  fontSize: 12,
-                },
-              }}
-              sx={{ width: { xs: "100%" } }}
-            />
-          </Search>
+              {/*------------------------------------------------------- SEARCH */}
+              <Search
+                sx={{
+                  width: { xs: "100%", sm: "auto", md: "400px" },
+                }}
+              >
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{
+                    "aria-label": "search",
+                    sx: {
+                      fontSize: 12,
+                    },
+                  }}
+                  sx={{ width: { xs: "100%" } }}
+                />
+              </Search>
 
-          {/* <Box sx={{ flexGrow: 1 }} /> */}
+              {/* <Box sx={{ flexGrow: 1 }} /> */}
 
-          {/*------------------------------------------------------- ICONS */}
-
-          {/*------------------------------------------------------- PROFILE */}
-          <ClerkLoaded>
-            <Box
-              sx={{
-                display: {
-                  xs: "flex",
-                  md: "flex",
-                },
-              }}
-            >
-              <SignedIn>
-                <IconButton
-                  size="small"
-                  aria-label="show messages"
-                  color="inherit"
-                  sx={{ marginRight: "15px" }}
+              {/*------------------------------------------------------- PROFILE */}
+              <ClerkLoaded>
+                <Box
+                  sx={{
+                    display: {
+                      xs: "flex",
+                      md: "flex",
+                    },
+                  }}
                 >
-                  <Badge color="error">
-                    <ChatBubble sx={{ fontSize: "20px" }} />
-                  </Badge>
-                </IconButton>
-
-                <Divider orientation="vertical" variant="middle" flexItem />
-
-                <IconButton
-                  size="small"
-                  aria-label="show notifications"
-                  color="inherit"
-                  sx={{ marginRight: "15px" }}
-                >
-                  <Badge color="error">
-                    <Notifications sx={{ fontSize: "20px" }} />
-                  </Badge>
-                </IconButton>
-
-                <UserButton />
-              </SignedIn>
-
-              <SignedOut>
-                <IconButton size="small" color="inherit">
-                  <Badge>
-                    <LoginRounded />
-                    <Link
-                      href="/sign-in"
-                      underline="none"
-                      fontStyle="none"
-                      fontFamily="sans-serif"
-                      fontSize={14}
-                      color="whitesmoke"
+                  <SignedIn>
+                    <IconButton
+                      size="small"
+                      aria-label="show messages"
+                      color="inherit"
+                      sx={{ marginRight: "15px" }}
                     >
-                      <Typography
-                        display="flex"
-                        alignItems="flex-end"
-                        marginLeft={1}
-                      >
-                        Login
-                      </Typography>
-                    </Link>
-                  </Badge>
-                </IconButton>
-              </SignedOut>
-            </Box>
-          </ClerkLoaded>
-        </Toolbar>
-      </AppBar>
-    </Box>
+                      <Badge color="error">
+                        <ChatBubble sx={{ fontSize: "20px" }} />
+                      </Badge>
+                    </IconButton>
+
+                    <Divider orientation="vertical" variant="middle" flexItem />
+
+                    <IconButton
+                      size="small"
+                      aria-label="show notifications"
+                      color="inherit"
+                      sx={{ marginRight: "15px" }}
+                    >
+                      <Badge color="error">
+                        <Notifications sx={{ fontSize: "20px" }} />
+                      </Badge>
+                    </IconButton>
+
+                    <UserButton />
+                  </SignedIn>
+
+                  <SignedOut>
+                    <IconButton size="small" color="inherit">
+                      <Badge>
+                        <LoginRounded />
+                        <Link
+                          href="/sign-in"
+                          underline="none"
+                          fontStyle="none"
+                          fontFamily="sans-serif"
+                          fontSize={14}
+                          color="whitesmoke"
+                        >
+                          <Typography
+                            display="flex"
+                            alignItems="flex-end"
+                            marginLeft={1}
+                          >
+                            Login
+                          </Typography>
+                        </Link>
+                      </Badge>
+                    </IconButton>
+                  </SignedOut>
+                </Box>
+              </ClerkLoaded>
+            </Toolbar>
+          </AppBar>
+        </Box>
+      </SignedIn>
+    </ClerkLoaded>
   );
 }
