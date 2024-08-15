@@ -168,7 +168,8 @@ export default function Page() {
         sx={{
           bgcolor: "#1976d2",
           width: "100%",
-          height: "15%",
+          height: "10%",
+          minHeight: "5rem",
           display: "flex",
           justifyContent: "center",
         }}
@@ -176,8 +177,8 @@ export default function Page() {
         <Image
           src={"/Logo_white.svg"}
           alt="Logo_white"
-          width={200}
-          height={200}
+          width={150}
+          height={150}
           className="drop-shadow-lg my-3"
         />
       </Box>
@@ -187,8 +188,8 @@ export default function Page() {
         sx={{
           bgcolor: "white",
           width: "100%",
-          height: "85%",
-          borderRadius: "50px 50px 0 0",
+          height: "90%",
+          borderRadius: "75px 75px 0 0",
         }}
       >
         <SignIn.Root>
@@ -197,7 +198,7 @@ export default function Page() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              gap: 4,
+              gap: 6,
               paddingY: 2,
             }}
           >
