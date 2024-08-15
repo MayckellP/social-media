@@ -72,12 +72,12 @@ export default function Page() {
       minHeight={`${screenHeight}px`}
       height={`${screenHeight}px`}
       maxHeight={`${screenHeight}px`}
-      sx={{ display: "flex", flexDirection: "column", bgcolor: "#642BF5" }}
+      sx={{ display: "flex", flexDirection: "column", bgcolor: "#1976d2" }}
     >
       {/* --------------------------------------------------------TOP SIDE - LOGO */}
       <Box
         sx={{
-          bgcolor: "#642BF5",
+          bgcolor: "#1976d2",
           width: "100%",
           height: "15%",
           display: "flex",
@@ -265,7 +265,7 @@ export default function Page() {
                     textAlign="center"
                     fontSize={13.5}
                     fontWeight="bold"
-                    sx={{ color: "#642BF5" }}
+                    sx={{ color: "#1976d2" }}
                   >
                     Create an account
                   </Typography>
