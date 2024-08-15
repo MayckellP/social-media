@@ -1,27 +1,41 @@
 "use client";
+//!-----------------------------------------------------------REACT
+import { useEffect, useState, forwardRef } from "react";
 
-import { useEffect, useState } from "react";
+//-----------------------------------------------------------MUI
 import { Box, Typography, Icon } from "@mui/material";
-import Image from "next/image";
 
-import * as Clerk from "@clerk/elements/common";
-import * as SignIn from "@clerk/elements/sign-in";
+//--------------FORM
+import FormControl from "@mui/material/FormControl";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
+import Fab from "@mui/material/Fab";
 
+//!--------------PASSWORD VISIBILITY
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
+//!--------------ICONS
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import XIcon from "@mui/icons-material/X";
 import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import TextField from "@mui/material/TextField";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Fab from "@mui/material/Fab";
 
+//!-----------------------------------------------------------CLERK
+import * as Clerk from "@clerk/elements/common";
+import * as SignIn from "@clerk/elements/sign-in";
+
+//!-----------------------------------------------------------NEXT
+import Image from "next/image";
 import Link from "next/link";
 
-import { forwardRef } from "react";
-
+//?-----------------------------------------------------------INPUT EMAIL
 const MUIInput = forwardRef(function MUIInput(props, ref) {
   return (
     <TextField
@@ -35,7 +49,100 @@ const MUIInput = forwardRef(function MUIInput(props, ref) {
   );
 });
 
+//?-----------------------------------------------------------INPUT PASSWORD
+const MUIPassword = forwardRef(function MUIPassword(props, ref) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+  return (
+    <FormControl sx={{ width: "80%" }} variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <OutlinedInput
+        id="outlined-adornment-password"
+        inputRef={ref}
+        {...props}
+        type={showPassword ? "text" : "password"}
+        size="medium"
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </InputAdornment>
+        }
+        label="Password"
+      />
+    </FormControl>
+  );
+});
+
+//?-----------------------------------------------------------INPUT CODE RESET PASSWORD
+const MUICode = forwardRef(function MUICode(props, ref) {
+  return (
+    <TextField
+      inputRef={ref}
+      {...props}
+      label="Code"
+      variant="outlined"
+      size="medium"
+      sx={{ width: "80%" }}
+    />
+  );
+});
+
+//?-----------------------------------------------------------INPUT NEW PASSWORD
+const MUINewPassword = forwardRef(function MUINewPassword(props, ref) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+  return (
+    <FormControl sx={{ width: "80%" }} variant="outlined">
+      <InputLabel htmlFor="outlined-adornment-password">
+        New password
+      </InputLabel>
+      <OutlinedInput
+        id="outlined-adornment-password"
+        inputRef={ref}
+        {...props}
+        type={showPassword ? "text" : "password"}
+        size="medium"
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickShowPassword}
+              onMouseDown={handleMouseDownPassword}
+              edge="end"
+            >
+              {showPassword ? <VisibilityOff /> : <Visibility />}
+            </IconButton>
+          </InputAdornment>
+        }
+        label="Password"
+      />
+    </FormControl>
+  );
+});
+
 export default function Page() {
+  //*-----------------------------------------------------------TAKE THE SCREEN HEIGHT
   const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
   useEffect(() => {
@@ -53,6 +160,7 @@ export default function Page() {
     <Box
       minHeight={`${screenHeight}px`}
       height={`${screenHeight}px`}
+      maxHeight={`${screenHeight}px`}
       sx={{ bgcolor: "#1976d2" }}
     >
       {/* --------------------------------------------------------TOP SIDE - LOGO */}
@@ -84,115 +192,119 @@ export default function Page() {
         }}
       >
         <SignIn.Root>
-          <SignIn.Step name="start">
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                gap: 5,
-                paddingY: 2,
-              }}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              gap: 4,
+              paddingY: 2,
+            }}
+          >
+            {/* --------------------------------------------------------TITLE*/}
+            <Box display="flex" flexDirection="column" gap={1}>
+              <Typography
+                fontWeight="bold"
+                fontFamily="unset"
+                textAlign="center"
+                fontSize={28}
+              >
+                LOGIN
+              </Typography>
+              <Typography
+                fontWeight="bold"
+                fontFamily="inherit"
+                textAlign="center"
+                fontSize={13}
+                sx={{ color: "gray" }}
+              >
+                Welcome back! Select method to log in:
+              </Typography>
+            </Box>
+
+            {/* --------------------------------------------------------SOCIAL CONNECTIONS */}
+            <Stack
+              spacing={3}
+              direction="row"
+              justifyContent="space-evenly"
+              paddingX={5}
             >
-              <Box display="flex" flexDirection="column" gap={1}>
-                <Typography
-                  fontWeight="bold"
-                  fontFamily="unset"
-                  textAlign="center"
-                  fontSize={28}
+              <Clerk.Connection name="google" asChild>
+                <Fab
+                  sx={{
+                    backgroundColor: "white",
+                    border: "1px solid #D9D9D9", // Borde gris claro
+                    "&:hover": {
+                      backgroundColor: "#F1F1F1", // Gris muy claro en hover
+                    },
+                  }}
+                  variant="circular"
+                  size="large"
                 >
-                  LOGIN
-                </Typography>
-                <Typography
-                  fontWeight="bold"
-                  fontFamily="inherit"
-                  textAlign="center"
-                  fontSize={13}
-                  sx={{ color: "gray" }}
-                >
-                  Welcome back! Select method to log in:
-                </Typography>
-              </Box>
+                  <GoogleIcon sx={{ color: "#4285F4" }} fontSize="medium" />
+                </Fab>
+              </Clerk.Connection>
 
-              <Stack
-                spacing={3}
-                direction="row"
-                justifyContent="space-evenly"
-                paddingX={5}
+              <Clerk.Connection name="github" asChild>
+                <Fab
+                  sx={{
+                    backgroundColor: "#333", // GitHub Black
+                    "&:hover": {
+                      backgroundColor: "#24292e", // Ligeramente más claro en hover
+                    },
+                  }}
+                  variant="circular"
+                  size="large"
+                >
+                  <GitHubIcon sx={{ color: "white" }} fontSize="medium" />
+                </Fab>
+              </Clerk.Connection>
+
+              <Clerk.Connection name="facebook" asChild>
+                <Fab
+                  sx={{
+                    backgroundColor: "white",
+                    border: "1px solid #D9D9D9", // Borde gris claro
+                    "&:hover": {
+                      backgroundColor: "#F1F1F1", // Gris muy claro en hover
+                    },
+                  }}
+                  variant="circular"
+                  size="large"
+                >
+                  <XIcon sx={{ color: "#1DA1F2" }} fontSize="medium" />
+                </Fab>
+              </Clerk.Connection>
+            </Stack>
+
+            {/* --------------------------------------------------------DIVIDER */}
+            <Box
+              marginY={1}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Divider variant="middle" sx={{ width: "30%" }} />
+              <Typography
+                fontWeight="bold"
+                fontFamily="inherit"
+                textAlign="center"
+                fontSize={13}
+                sx={{ color: "gray" }}
               >
-                <Clerk.Connection name="google" asChild>
-                  <Fab
-                    sx={{
-                      backgroundColor: "white",
-                      border: "1px solid #D9D9D9", // Borde gris claro
-                      "&:hover": {
-                        backgroundColor: "#F1F1F1", // Gris muy claro en hover
-                      },
-                    }}
-                    variant="circular"
-                    size="large"
-                  >
-                    <GoogleIcon sx={{ color: "#4285F4" }} fontSize="medium" />
-                  </Fab>
-                </Clerk.Connection>
+                Or
+              </Typography>
+              <Divider variant="middle" sx={{ width: "30%" }} />
+            </Box>
 
-                <Clerk.Connection name="github" asChild>
-                  <Fab
-                    sx={{
-                      backgroundColor: "#333", // GitHub Black
-                      "&:hover": {
-                        backgroundColor: "#24292e", // Ligeramente más claro en hover
-                      },
-                    }}
-                    variant="circular"
-                    size="large"
-                  >
-                    <GitHubIcon sx={{ color: "white" }} fontSize="medium" />
-                  </Fab>
-                </Clerk.Connection>
-
-                <Clerk.Connection name="facebook" asChild>
-                  <Fab
-                    sx={{
-                      backgroundColor: "white",
-                      border: "1px solid #D9D9D9", // Borde gris claro
-                      "&:hover": {
-                        backgroundColor: "#F1F1F1", // Gris muy claro en hover
-                      },
-                    }}
-                    variant="circular"
-                    size="large"
-                  >
-                    <XIcon sx={{ color: "#1DA1F2" }} fontSize="medium" />
-                  </Fab>
-                </Clerk.Connection>
-              </Stack>
-
-              <Box
-                marginY={1}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Divider variant="middle" sx={{ width: "30%" }} />
-                <Typography
-                  fontWeight="bold"
-                  fontFamily="inherit"
-                  textAlign="center"
-                  fontSize={13}
-                  sx={{ color: "gray" }}
-                >
-                  Or
-                </Typography>
-                <Divider variant="middle" sx={{ width: "30%" }} />
-              </Box>
-
+            {/* --------------------------------------------------------INPUT EMAIL */}
+            <SignIn.Step name="start">
               <Box
                 display="flex"
                 flexDirection="column"
                 margin="auto"
                 sx={{ width: "100%" }}
-                gap={6}
+                gap={5}
                 textAlign="center"
               >
                 <Clerk.Field name="identifier">
@@ -224,119 +336,180 @@ export default function Page() {
                   </Fab>
                 </SignIn.Action>
               </Box>
+            </SignIn.Step>
 
-              <Box
-                marginY={2}
-                display="flex"
-                alignItems="center"
+            {/* --------------------------------------------------------INPUT PASSWORD */}
+            <SignIn.Step name="verifications">
+              <SignIn.Strategy name="password">
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  margin="auto"
+                  sx={{ width: "100%" }}
+                  gap={5}
+                  textAlign="center"
+                >
+                  <Clerk.Field name="password">
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                    >
+                      <Clerk.Input asChild>
+                        <MUIPassword />
+                      </Clerk.Input>
+
+                      {/* --------------------------------------------------------BUTTON FORGOT PASSWORD */}
+                      <SignIn.Action navigate="forgot-password">
+                        <Typography
+                          fontFamily="inherit"
+                          textAlign="center"
+                          fontSize={13}
+                          sx={{ color: "#1976d2" }}
+                        >
+                          Forgot password?
+                        </Typography>
+                      </SignIn.Action>
+                    </Box>
+                  </Clerk.Field>
+
+                  <SignIn.Action submit asChild>
+                    <Fab
+                      aria-label="continue"
+                      size="large"
+                      variant="extended"
+                      color="primary"
+                      sx={{ width: "30%", margin: "auto" }}
+                    >
+                      <ArrowForwardIosIcon sx={{ fontSize: "20px" }} />
+                    </Fab>
+                  </SignIn.Action>
+                </Box>
+              </SignIn.Strategy>
+
+              <SignIn.Strategy name="reset_password_email_code">
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  gap={4}
+                  justifyContent="center"
+                  alignItems="center"
+                  textAlign="center"
+                >
+                  <Box>
+                    <Typography fontWeight="bold" fontSize={18}>
+                      Check your email!
+                    </Typography>
+                    <Typography color="gray" fontSize={12}>
+                      We sent a code to <SignIn.SafeIdentifier />.
+                    </Typography>
+                  </Box>
+
+                  <Clerk.Field name="code">
+                    <Clerk.Input asChild>
+                      <MUICode />
+                    </Clerk.Input>
+                    <Clerk.FieldError />
+                  </Clerk.Field>
+
+                  <SignIn.Action submit>
+                    <Button variant="contained" sx={{ textTransform: "none" }}>
+                      Verify
+                    </Button>
+                  </SignIn.Action>
+                </Box>
+              </SignIn.Strategy>
+            </SignIn.Step>
+
+            {/* --------------------------------------------------------BUTTON RESET PASSWORD - SEND CODE */}
+            <SignIn.Step name="forgot-password">
+              <Stack
+                spacing={5}
+                direction="column"
                 justifyContent="center"
-                gap={1}
+                alignItems="center"
               >
+                <SignIn.SupportedStrategy name="reset_password_email_code">
+                  <Button variant="contained" sx={{ textTransform: "none" }}>
+                    Reset password
+                  </Button>
+                </SignIn.SupportedStrategy>
+
+                <SignIn.Action navigate="previous" asChild>
+                  <Button
+                    variant="text"
+                    sx={{
+                      color: "black",
+                      width: "50%",
+                      fontWeight: "bold",
+                      textTransform: "none",
+                    }}
+                  >
+                    Back
+                  </Button>
+                </SignIn.Action>
+              </Stack>
+            </SignIn.Step>
+
+            {/* --------------------------------------------------------INPUT NEW PASSWORD */}
+            <SignIn.Step name="reset-password">
+              <Box
+                display="flex"
+                flexDirection="column"
+                gap={4}
+                justifyContent="center"
+                alignItems="center"
+                textAlign="center"
+              >
+                <Typography fontWeight="bold" fontSize={18}>
+                  Reset your password
+                </Typography>
+
+                <Clerk.Field name="password">
+                  <Clerk.Input asChild>
+                    <MUINewPassword />
+                  </Clerk.Input>
+                  <Clerk.FieldError />
+                </Clerk.Field>
+
+                <SignIn.Action submit asChild>
+                  <Button variant="contained" sx={{ textTransform: "none" }}>
+                    Resset
+                  </Button>
+                </SignIn.Action>
+              </Box>
+            </SignIn.Step>
+
+            <Box
+              marginY={2}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              gap={1}
+            >
+              <Typography
+                fontFamily="inherit"
+                textAlign="center"
+                fontSize={13}
+                sx={{ color: "gray" }}
+              >
+                Dont have an account?
+              </Typography>
+              <Link href={"/sign-up"}>
                 <Typography
                   fontFamily="inherit"
                   textAlign="center"
                   fontSize={13}
-                  sx={{ color: "gray" }}
+                  fontWeight="bold"
+                  sx={{ color: "#1976d2" }}
                 >
-                  Dont have an account?
+                  Create an account
                 </Typography>
-                <Link href={"/sign-up"}>
-                  <Typography
-                    fontFamily="inherit"
-                    textAlign="center"
-                    fontSize={13}
-                    fontWeight="bold"
-                    sx={{ color: "#1976d2" }}
-                  >
-                    Create an account
-                  </Typography>
-                </Link>
-              </Box>
+              </Link>
             </Box>
-          </SignIn.Step>
-
-          {/* <SignIn.Step name="verifications">
-            <SignIn.Strategy name="email_code">
-              <h1>Check your email</h1>
-              <p>
-                We sent a code to <SignIn.SafeIdentifier />.
-              </p>
-
-              <Clerk.Field name="code">
-                <Clerk.Label>Email code</Clerk.Label>
-                <Clerk.Input />
-                <Clerk.FieldError />
-              </Clerk.Field>
-
-              <SignIn.Action submit>Continue</SignIn.Action>
-            </SignIn.Strategy>
-
-            <SignIn.Strategy name="password">
-              <h1>Enter your password</h1>
-
-              <Clerk.Field name="password">
-                <Clerk.Label>Password</Clerk.Label>
-                <Clerk.Input />
-                <Clerk.FieldError />
-              </Clerk.Field>
-
-              <SignIn.Action submit>Continue</SignIn.Action>
-              <SignIn.Action navigate="forgot-password">
-                Forgot password?
-              </SignIn.Action>
-            </SignIn.Strategy>
-
-            <SignIn.Strategy name="reset_password_email_code">
-              <h1>Check your email</h1>
-              <p>
-                We sent a code to <SignIn.SafeIdentifier />.
-              </p>
-
-              <Clerk.Field name="code">
-                <Clerk.Label>Email code</Clerk.Label>
-                <Clerk.Input />
-                <Clerk.FieldError />
-              </Clerk.Field>
-
-              <SignIn.Action submit>Continue</SignIn.Action>
-            </SignIn.Strategy>
-          </SignIn.Step> */}
-
-          <SignIn.Step name="forgot-password">
-            <h1>Forgot your password?</h1>
-
-            <SignIn.SupportedStrategy name="reset_password_email_code">
-              Reset password
-            </SignIn.SupportedStrategy>
-
-            <SignIn.Action navigate="previous">Go back</SignIn.Action>
-          </SignIn.Step>
-
-          <SignIn.Step name="reset-password">
-            <h1>Reset your password</h1>
-
-            <Clerk.Field name="password">
-              <Clerk.Label>New password</Clerk.Label>
-              <Clerk.Input />
-              <Clerk.FieldError />
-            </Clerk.Field>
-
-            <Clerk.Field name="confirmPassword">
-              <Clerk.Label>Confirm password</Clerk.Label>
-              <Clerk.Input />
-              <Clerk.FieldError />
-            </Clerk.Field>
-
-            <SignIn.Action submit>Reset password</SignIn.Action>
-          </SignIn.Step>
+          </Box>
         </SignIn.Root>
       </Box>
-      {/* 
-      <SignIn
-        appearance={{
-          variables: { colorPrimary: "#1D4ED8" },
-        }}
-      /> */}
     </Box>
   );
 }
