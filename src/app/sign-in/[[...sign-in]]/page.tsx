@@ -88,7 +88,7 @@ export default function Page() {
           alt="Logo_white"
           width={200}
           height={200}
-          className="drop-shadow-lg"
+          className="drop-shadow-lg my-3"
         />
       </Box>
 
