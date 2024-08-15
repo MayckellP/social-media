@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Box, Paper, Typography, Icon } from "@mui/material";
+import { Box, Typography, Icon } from "@mui/material";
 import Image from "next/image";
 
 import * as Clerk from "@clerk/elements/common";
@@ -21,9 +21,6 @@ import Fab from "@mui/material/Fab";
 import Link from "next/link";
 
 import { forwardRef } from "react";
-import { useSignIn } from "@clerk/nextjs";
-
-//const screenHeight = window.innerHeight;
 
 const MUIInput = forwardRef(function MUIInput(props, ref) {
   return (
@@ -34,20 +31,6 @@ const MUIInput = forwardRef(function MUIInput(props, ref) {
       variant="outlined"
       size="medium"
       sx={{ width: "80%" }}
-    />
-  );
-});
-
-const MUIInputError = forwardRef(function MUIInputError(props, ref) {
-  return (
-    <TextField
-      inputRef={ref}
-      {...props}
-      error
-      id="outlined-error-helper-text"
-      label="Error"
-      defaultValue="Hello World"
-      helperText="Incorrect entry."
     />
   );
 });
@@ -70,7 +53,6 @@ export default function Page() {
     <Box
       minHeight={`${screenHeight}px`}
       height={`${screenHeight}px`}
-      //maxHeight={`${screenHeight}px`}
       sx={{ bgcolor: "#1976d2" }}
     >
       {/* --------------------------------------------------------TOP SIDE - LOGO */}
@@ -112,7 +94,7 @@ export default function Page() {
                 paddingY: 2,
               }}
             >
-              <Box display="flex" flexDirection="column" gap={2}>
+              <Box display="flex" flexDirection="column" gap={1}>
                 <Typography
                   fontWeight="bold"
                   fontFamily="unset"
@@ -187,7 +169,7 @@ export default function Page() {
               </Stack>
 
               <Box
-                marginY={3}
+                marginY={1}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
@@ -244,7 +226,7 @@ export default function Page() {
               </Box>
 
               <Box
-                marginY={3}
+                marginY={2}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
@@ -262,7 +244,7 @@ export default function Page() {
                   <Typography
                     fontFamily="inherit"
                     textAlign="center"
-                    fontSize={13.5}
+                    fontSize={13}
                     fontWeight="bold"
                     sx={{ color: "#1976d2" }}
                   >
