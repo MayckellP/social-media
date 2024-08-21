@@ -208,9 +208,9 @@ export default function Page() {
                 fontWeight="bold"
                 fontFamily="unset"
                 textAlign="center"
-                fontSize={28}
+                fontSize={25}
               >
-                LOGIN
+                Login
               </Typography>
               <Typography
                 fontWeight="bold"

@@ -247,7 +247,7 @@ export default function Page() {
                 fontWeight="bold"
                 fontFamily="unset"
                 textAlign="center"
-                fontSize={28}
+                fontSize={25}
               >
                 Create your account
               </Typography>
