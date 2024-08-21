@@ -143,9 +143,9 @@ const MUINewPassword = forwardRef(function MUINewPassword(props, ref) {
 
 export default function Page() {
   //*-----------------------------------------------------------TAKE THE SCREEN HEIGHT
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
+  // const [screenHeight, setScreenHeight] = useState(window.innerHeight);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const handleResize = () => {
       setScreenHeight(window.innerHeight);
     };
@@ -155,12 +155,12 @@ export default function Page() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, []); */
   return (
     <Box
-      minHeight={`${screenHeight}px`}
+      /* minHeight={`${screenHeight}px`}
       height={`${screenHeight}px`}
-      maxHeight={`${screenHeight}px`}
+      maxHeight={`${screenHeight}px`} */
       sx={{ bgcolor: "#1976d2" }}
     >
       {/* --------------------------------------------------------TOP SIDE - LOGO */}
@@ -413,7 +413,7 @@ export default function Page() {
                     <Clerk.FieldError />
                   </Clerk.Field>
 
-                  <SignIn.Action submit>
+                  <SignIn.Action submit asChild>
                     <Button variant="contained" sx={{ textTransform: "none" }}>
                       Verify
                     </Button>
